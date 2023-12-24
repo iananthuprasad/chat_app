@@ -7,11 +7,7 @@ const Chatroom = () => {
   const msgRef = useRef();
   
 
-  function logout() {
-    auth.signOut();
-    localStorage.clear();
-    window.location.reload();
-  }
+ 
 
 
 
@@ -31,6 +27,7 @@ const Chatroom = () => {
     } catch (error) {
       console.error("Error adding data:", error);
     }
+    window.location.reload()
   };
 
 
@@ -54,24 +51,38 @@ useEffect(() => {
 }, []);
 
 
+function logout() {
+  auth.signOut();
+  localStorage.clear();
+  window.location.reload();
+}
+
 
   return (
-    <div>
-      <h2>Chat</h2>
-      <div>
+    <div className="Appp">
+     
+      <header>
+        <h1>⚛️🔥💬</h1>
+        <button onClick={logout} className="signout">
+          Logout
+        </button>
+      </header>
+
+
+      <div className="main">
         {data.map((doc, index) => (
-          <div key={index}>{doc.message}</div>
+          <div key={index} className="p">{doc.message}</div>
         ))}
       </div>
       <div>
-        <form onSubmit={handleSave}>
+        <form onSubmit={handleSave} className="form">
           <label>Enter the message</label>
           <input type="text" ref={msgRef} />
           <button type="submit">Send</button>
         </form>
       </div>
       <div>
-        <button onClick={logout}>Logout</button>
+       
       </div>
     </div>
   );

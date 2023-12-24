@@ -15,7 +15,7 @@ const Sign = () => {
 
   return (
     <div>
-      <button onClick={signInWithGoogle}>sign in with google</button>
+      <button onClick={signInWithGoogle} className='sign'>sign in with google</button>
     </div>
   )
 }
