@@ -1,12 +1,20 @@
-// App.js
+
 import React from "react";
 import Tryy from './components/Tryy'
+import Chatroom from "./components/Chatroom";
+import Sign from "./components/Sign";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "./firebase";
+
 
 const App = () => {
+  const [user] = useAuthState(auth);
   return (
-    <div>
-      <h1>React + Firebase App</h1>
-      <Tryy />
+    <div className="app">
+      <header></header>
+      <section>
+        {user? <Chatroom/>:<Sign/>}
+      </section>
     </div>
   );
 };

@@ -5,6 +5,8 @@ import { firestore } from "../firebase";
 
 const AddDataComponent = () => {
   const msgRef = useRef();
+
+  
   const messagesRef = collection(firestore, "messages");
 
   const handleSave = async (e) => {
